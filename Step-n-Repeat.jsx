@@ -1061,7 +1061,7 @@ function main() {
         var liveWidth = boardWidth - (Math.abs(startLeft) * 2);
         var liveHeight = boardHeight - (Math.abs(startTop) * 2);
 
-        var colCount = Math.floor(liveWidth / $selection.width);
+        var colCount = Math.floor(liveWidth / colWidth);
         var rowCount = Math.floor(liveHeight / rowHeight);
 
         var itemCount =  (rowCount * colCount) - 1;
@@ -1085,6 +1085,7 @@ function main() {
              */
             for (var rowCounter = 1 ; rowCounter <= rowCount; rowCounter++) {
 
+                // Set vertical offset
                 myY1 = (startTop * -1) + (rowHeight * (rowCounter-1));
 
                 /*
@@ -1098,7 +1099,8 @@ function main() {
 
                     Utils.updateProgress("copies made");
 
-                    var myX1 = startLeft + ($selection.width * (columnCounter-1));
+                    // Set horizontal offset
+                    var myX1 = startLeft + (colWidth * (columnCounter-1));
 
                     x1 = myX1;
                     y1 = myY1 * -1;
