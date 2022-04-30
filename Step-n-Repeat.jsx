@@ -1025,10 +1025,11 @@ function main() {
     try {
         var doc, srcFolder, saveCompositeFile;
 
-        IS_AUTO_SAVE = true;
-
         if (IS_AUTO_SAVE) {
             AUTO_SAVE_PATH = Folder.selectDialog( "Choose folder to save output to" );
+            if (! AUTO_SAVE_PATH) {
+                return;
+            }
         }
 
         saveCompositeFile = false;
