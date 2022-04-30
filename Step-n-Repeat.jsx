@@ -1,3 +1,5 @@
+var IS_AUTO_SAVE = false;
+
 /**
  * The MIT License (MIT)
  *
@@ -165,171 +167,6 @@ var LANG = {
      */
     LABEL_PRESETS: "Presets"
 };
-
-var CONFIG = {
-
-    /**
-     * Number of rows
-     */
-
-    ROWS: 10,
-
-    /**
-     * Number of columns
-     */
-
-    COLS: 10,
-
-    /**
-     * Top & bottom page margins
-     */
-
-    VOFF: 64,
-
-    /**
-     * Left & Right page margins
-     */
-
-    HOFF: 64,
-
-    /**
-     * Row height. This is set programmatically.
-     */
-
-    ROW_WIDTH: 64,
-
-    /**
-     * Column Height. This is set programmatically.
-     */
-
-    COL_WIDTH: 64,
-
-    /**
-     * @deprecated
-     */
-    FRM_WIDTH: 64,
-
-    /**
-     * @deprecated
-     */
-    FRM_HEIGHT: 64,
-
-    /**
-     * Artboard width
-     *
-     * 10 columns 128 px wide, with 64 px page margins
-     */
-
-    PG_WIDTH: 1120,
-
-    /**
-     * Artboard height
-     *
-     * 20 rows 128 px tall, with 64 px page margins
-     */
-
-    PG_HEIGHT: 1400,
-
-    /**
-     * Page Count
-     */
-
-    PG_COUNT: 1,
-
-    /**
-     * Not yet fully-implemented. Will support multiple units
-     */
-
-    PG_UNITS: "px",
-
-    /**
-     * @deprecated
-     */
-
-    GUTTER: 0,
-
-    /**
-     * Enter scale in percentage 1-100
-     */
-
-    SCALE: 100,
-
-    /**
-     * Illustrator version compatibility
-     */
-
-    AIFORMAT: Compatibility.ILLUSTRATOR10,
-
-    /**
-     * If the icon is larger than the cell size, shrink it to the cell size
-     */
-
-    SHRINK_TO_FIT: true,
-
-    /**
-     * Starting folder for folder selector dialog
-     */
-
-    START_FOLDER: Folder.myDocuments,
-
-    /**
-     * The contact sheet file name
-     */
-
-    FILENAME: "step-n-repeat",
-
-    /**
-     * Enable logging?
-     */
-
-    LOGGING: true,
-
-    /**
-     * Verbose logging output?
-     */
-    DEBUG: true,
-
-    /**
-     * @deprecated
-     */
-
-    SKIP_COLS: 0,
-
-    /**
-     * Not fully-implemented
-     */
-
-    STRIP: ["svg", "ai", "eps", "txt", "pdf"],
-
-    /**
-     * Presets folder path
-     */
-    PRESETS_FOLDER: Folder.myDocuments + '/ai-step-n-repeat/presets',
-
-    /**
-     * Log folder path
-     */
-
-    LOG_FOLDER: Folder.myDocuments + '/ai-step-n-repeat/logs/',
-
-    /**
-     * Log file location
-     */
-
-    LOG_FILE_PATH: Folder.myDocuments + '/ai-step-n-repeat/logs/' + Utils.doDateFormat(new Date()) + '-log.txt',
-
-    /**
-     * Default path separator
-     */
-
-    PATH_SEPATATOR: "/"
-};
-
-/**
- * @author  Scott Lewis <scott@atomiclotus.net>
- * @url     https://atomiclotus.net
- * @date    2020-01-05
- */
 
 var Utils = {};
 
@@ -846,6 +683,165 @@ Utils.progressBarText = function(message) {
     Utils.progress.update();
 };
 
+var CONFIG = {
+
+    /**
+     * Number of rows
+     */
+
+    ROWS: 10,
+
+    /**
+     * Number of columns
+     */
+
+    COLS: 10,
+
+    /**
+     * Top & bottom page margins
+     */
+
+    VOFF: 64,
+
+    /**
+     * Left & Right page margins
+     */
+
+    HOFF: 64,
+
+    /**
+     * Row height. This is set programmatically.
+     */
+
+    ROW_WIDTH: 64,
+
+    /**
+     * Column Height. This is set programmatically.
+     */
+
+    COL_WIDTH: 64,
+
+    /**
+     * @deprecated
+     */
+    FRM_WIDTH: 64,
+
+    /**
+     * @deprecated
+     */
+    FRM_HEIGHT: 64,
+
+    /**
+     * Artboard width
+     *
+     * 10 columns 128 px wide, with 64 px page margins
+     */
+
+    PG_WIDTH: 1120,
+
+    /**
+     * Artboard height
+     *
+     * 20 rows 128 px tall, with 64 px page margins
+     */
+
+    PG_HEIGHT: 1400,
+
+    /**
+     * Page Count
+     */
+
+    PG_COUNT: 1,
+
+    /**
+     * Not yet fully-implemented. Will support multiple units
+     */
+
+    PG_UNITS: "px",
+
+    /**
+     * @deprecated
+     */
+
+    GUTTER: 0,
+
+    /**
+     * Enter scale in percentage 1-100
+     */
+
+    SCALE: 100,
+
+    /**
+     * Illustrator version compatibility
+     */
+
+    AIFORMAT: Compatibility.ILLUSTRATOR10,
+
+    /**
+     * If the icon is larger than the cell size, shrink it to the cell size
+     */
+
+    SHRINK_TO_FIT: true,
+
+    /**
+     * Starting folder for folder selector dialog
+     */
+
+    START_FOLDER: Folder.myDocuments,
+
+    /**
+     * The contact sheet file name
+     */
+
+    FILENAME: "step-n-repeat",
+
+    /**
+     * Enable logging?
+     */
+
+    LOGGING: true,
+
+    /**
+     * Verbose logging output?
+     */
+    DEBUG: true,
+
+    /**
+     * @deprecated
+     */
+
+    SKIP_COLS: 0,
+
+    /**
+     * Not fully-implemented
+     */
+
+    STRIP: ["svg", "ai", "eps", "txt", "pdf"],
+
+    /**
+     * Presets folder path
+     */
+    PRESETS_FOLDER: Folder.myDocuments + '/ai-step-n-repeat/presets',
+
+    /**
+     * Log folder path
+     */
+
+    LOG_FOLDER: Folder.myDocuments + '/ai-step-n-repeat/logs/',
+
+    /**
+     * Log file location
+     */
+
+    LOG_FILE_PATH: Folder.myDocuments + '/ai-step-n-repeat/logs/' + Utils.doDateFormat(new Date()) + '-log.txt',
+
+    /**
+     * Default path separator
+     */
+
+    PATH_SEPATATOR: "/"
+};
+
 /**
  * Display a new progress bar.
  * @param maxvalue
@@ -1017,6 +1013,9 @@ function deselectAll() {
     } catch(e) {}
 }
 
+var AUTO_SAVE_PATH = "";
+var AUTO_SAVE_FILE_NAME = "";
+
 /**
  * Main logic to create the Step-n-Repeat.
  * @return void
@@ -1026,11 +1025,17 @@ function main() {
     try {
         var doc, srcFolder, saveCompositeFile;
 
+        IS_AUTO_SAVE = true;
+
+        if (IS_AUTO_SAVE) {
+            AUTO_SAVE_PATH = Folder.selectDialog( "Choose folder to save output to" );
+        }
+
         saveCompositeFile = false;
 
-        // if (Utils.trim(CONFIG.OUTPUT_FILENAME) == "") {
-        //     CONFIG.OUTPUT_FILENAME = srcFolder.name.replace(" ", "-") + "-step-n-repeat.ai";
-        // }
+        if (IS_AUTO_SAVE) {
+           AUTO_SAVE_FILE_NAME = Utils.doDateFormat(new Date()) + "-SNR.ai";
+        }
 
         app.coordinateSystem = CoordinateSystem.ARTBOARDCOORDINATESYSTEM;
         doc = app.activeDocument;
@@ -1038,10 +1043,13 @@ function main() {
             doc.artboards.getActiveArtboardIndex()
         );
 
-        var selectedObject = doc.selection[0];
+        var $selection = doc.selection[0];
 
-        var rowHeight = selectedObject.height + (Math.abs(startTop));
-        var colWidth = selectedObject.width + (Math.abs(startLeft));
+        var startTop = $selection.top;
+        var startLeft = $selection.left;
+
+        var rowHeight = $selection.height + (Math.abs(startTop));
+        var colWidth = $selection.width + (Math.abs(startLeft));
         var currentArtboardIndex = doc.artboards.getActiveArtboardIndex()
 
         var board  = doc.artboards[currentArtboardIndex];
@@ -1052,7 +1060,7 @@ function main() {
         var liveWidth = boardWidth - (Math.abs(startLeft) * 2);
         var liveHeight = boardHeight - (Math.abs(startTop) * 2);
 
-        var colCount = Math.floor(liveWidth / selectedObject.width);
+        var colCount = Math.floor(liveWidth / $selection.width);
         var rowCount = Math.floor(liveHeight / rowHeight);
 
         var itemCount =  (rowCount * colCount) - 1;
@@ -1085,17 +1093,17 @@ function main() {
 
                 for (var columnCounter = rowCounter == 1 ? 2 : 1 ; columnCounter <= colCount; columnCounter++) {
 
-                    selectedObject = copyPasteSelection(currentArtboardIndex, [0, 0]);
+                    $selection = copyPasteSelection(currentArtboardIndex, [0, 0]);
 
                     Utils.updateProgress("copies made");
 
-                    var myX1 = startLeft + (selectedObject.width * (columnCounter-1));
+                    var myX1 = startLeft + ($selection.width * (columnCounter-1));
 
                     x1 = myX1;
                     y1 = myY1 * -1;
 
                     try {
-                        selectedObject.translate(x1, y1);
+                        $selection.translate(x1, y1);
                         redraw();
 
                         /*
@@ -1117,9 +1125,9 @@ function main() {
         alert(msg);
     }
 
-    if (saveCompositeFile) {
+    if (IS_AUTO_SAVE && saveCompositeFile) {
         Utils.progressBarText("Saving Step-n-Repeat");
-        // Utils.saveFileAsAi(doc, new Folder(srcFolder).path + "/" + CONFIG.OUTPUT_FILENAME, CONFIG.AIFORMAT);
+        Utils.saveFileAsAi(doc, new Folder(AUTO_SAVE_PATH).path + "/" + AUTO_SAVE_FILE_NAME, CONFIG.AIFORMAT);
     }
 
     Utils.hideProgressBar();
